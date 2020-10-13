@@ -1,0 +1,7 @@
+CREATE TABLE reviews (
+id SERIAL PRIMARY KEY,
+rating INTEGER NOT NULL,
+comment VARCHAR(300),
+word_id INTEGER REFERENCES words(id) NOT NULL,
+user_id INTEGER REFERENCES users(ID) NOT NULL
+);
