@@ -6,11 +6,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/languages")
 public class LanguagesAPIController {
-  
-  // get all reviews
-
-  // post a new review
-
-  // etc
-
 }

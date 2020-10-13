@@ -6,11 +6,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/reviews")
 public class ReviewsAPIController {
-
-  // get all reviews
-
-  // post a new review
-
-  // etc
-
 }
