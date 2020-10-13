@@ -70,6 +70,10 @@ public class WordSeeder {
     mabuhay.setWord("mabuhay");
     mabuhay.setLanguage(tagalog);
     wordsToAdd.add(mabuhay);
+    Word ubiquitous = new Word();
+    ubiquitous.setWord("ubiquitous");
+    ubiquitous.setLanguage(english);
+    wordsToAdd.add(ubiquitous);
 
     if (!wordRepo.findAll().iterator().hasNext()) {
       wordRepo.saveAll(wordsToAdd);
