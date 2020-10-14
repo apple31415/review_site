@@ -5,7 +5,7 @@ const WordsContainer = (props) => {
   const [words, setWords] = useState([])
 
   useEffect(() => {
-    fetch('api/v1/words')
+    fetch('/api/v1/words')
     .then(result => result.json())
     .then(words => {
       setWords(words)
