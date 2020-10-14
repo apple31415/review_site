@@ -16,8 +16,8 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<node.version>14.7.0</node.version>
-		<yarn.version>1.22.4</yarn.version>
+		<node.version>v14.7.0</node.version>
+		<yarn.version>v1.22.4</yarn.version>
 		<frontend-plugin.version>1.7.6</frontend-plugin.version>
 	</properties>
 
