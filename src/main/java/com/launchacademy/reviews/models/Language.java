@@ -1,7 +1,9 @@
 package com.launchacademy.reviews.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,9 +29,10 @@ public class Language {
   @Column(name="id", nullable=false, unique=true)
   private Integer id;
 
-  @Column(name = "language", nullable = false)
-  private String language;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-  @OneToMany(mappedBy = "language")
-  private List<Word> words = new ArrayList<Word>();
+  @OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("language")
+  private List<Word> words;
 }
