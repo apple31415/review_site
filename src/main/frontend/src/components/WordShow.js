@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import ReviewForm from './ReviewForm'
+// import ReviewForm from './ReviewForm'
 
 const WordShow = (props) => {
   let wordId = props.match.params.id
