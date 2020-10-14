@@ -29,3 +29,4 @@ const WordShow = (props) => {
     </div>
   )
 } 
+export default WordShow
