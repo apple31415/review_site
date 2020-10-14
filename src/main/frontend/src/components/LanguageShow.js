@@ -13,7 +13,6 @@ const LanguageShow = (props) => {
     })
   }, []);
 
-
   return (
     <div>
       <h1>Languages!</h1>

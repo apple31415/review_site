@@ -30,6 +30,5 @@ const WordsContainer = (props) => {
       {WordsElements}
     </div>
   )
-
 }
 export default WordsContainer 
