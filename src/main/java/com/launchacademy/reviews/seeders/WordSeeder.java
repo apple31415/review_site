@@ -37,6 +37,7 @@ public class WordSeeder {
     Word raccoon = new Word();
     raccoon.setWord("raccoon");
     raccoon.setLanguage(powhatan);
+    raccoon.setDefinition("Trash Panda");
     wordsToAdd.add(raccoon);
     Word tutaonana = new Word();
     tutaonana.setWord("tutaonana");
