@@ -107,7 +107,7 @@ public class WordSeeder {
 
     Word discombobulated = new Word();
     discombobulated.setName("discombobulated");
-    dingsbums.setLanguage(english);
+    discombobulated.setLanguage(english);
     wordsToAdd.add(discombobulated);
 
     if (!wordRepo.findAll().iterator().hasNext()) {
