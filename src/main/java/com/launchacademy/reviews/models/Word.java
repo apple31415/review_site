@@ -41,7 +41,6 @@ public class Word {
   @JsonIgnoreProperties("word")
   private List<Review> reviews;
 
-
   @ManyToOne
   @JoinColumn(name = "language_id", nullable = false)
   @JsonIgnoreProperties("words")
