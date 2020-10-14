@@ -24,57 +24,91 @@ public class WordSeeder {
   }
 
   public void seed() {
-    Language english = languageRepo.findByLanguage("English");
-    Language french = languageRepo.findByLanguage("French");
-    Language german = languageRepo.findByLanguage("German");
-    Language quechua = languageRepo.findByLanguage("Quechua");
-    Language powhatan = languageRepo.findByLanguage("Powhatan");
-    Language tagalog = languageRepo.findByLanguage("Tagalog");
-    Language swahili = languageRepo.findByLanguage("Swahili");
-    Language korean = languageRepo.findByLanguage("Korean");
+    Language english = languageRepo.findByName("English");
+    Language french = languageRepo.findByName("French");
+    Language german = languageRepo.findByName("German");
+    Language quechua = languageRepo.findByName("Quechua");
+    Language powhatan = languageRepo.findByName("Powhatan");
+    Language tagalog = languageRepo.findByName("Tagalog");
+    Language swahili = languageRepo.findByName("Swahili");
+    Language korean = languageRepo.findByName("Korean");
 
     List<Word> wordsToAdd = new ArrayList<>();
     Word raccoon = new Word();
-    raccoon.setWord("raccoon");
+    raccoon.setName("raccoon");
     raccoon.setLanguage(powhatan);
     raccoon.setDefinition("Trash Panda");
     wordsToAdd.add(raccoon);
+
     Word tutaonana = new Word();
-    tutaonana.setWord("tutaonana");
+    tutaonana.setName("tutaonana");
     tutaonana.setLanguage(swahili);
     wordsToAdd.add(tutaonana);
+
     Word fernweh = new Word();
-    fernweh.setWord("fernweh");
+    fernweh.setName("fernweh");
     fernweh.setLanguage(german);
     wordsToAdd.add(fernweh);
+
     Word jerky = new Word();
-    jerky.setWord("jerky");
+    jerky.setName("jerky");
     jerky.setLanguage(quechua);
     wordsToAdd.add(jerky);
+
     Word amphisbaena = new Word();
-    amphisbaena.setWord("amphisbaena");
+    amphisbaena.setName("amphisbaena");
     amphisbaena.setLanguage(english);
     wordsToAdd.add(amphisbaena);
+
     Word argleBargle = new Word();
-    argleBargle.setWord("argle-bargle");
+    argleBargle.setName("argle-bargle");
     argleBargle.setLanguage(english);
     wordsToAdd.add(argleBargle);
+
     Word chocolat = new Word();
-    chocolat.setWord("chocolat");
+    chocolat.setName("chocolat");
     chocolat.setLanguage(french);
     wordsToAdd.add(chocolat);
+
     Word sundubu = new Word();
-    sundubu.setWord("sundubu");
+    sundubu.setName("sundubu");
     sundubu.setLanguage(korean);
     wordsToAdd.add(sundubu);
+
     Word mabuhay = new Word();
-    mabuhay.setWord("mabuhay");
+    mabuhay.setName("mabuhay");
     mabuhay.setLanguage(tagalog);
     wordsToAdd.add(mabuhay);
+
     Word ubiquitous = new Word();
-    ubiquitous.setWord("ubiquitous");
+    ubiquitous.setName("ubiquitous");
     ubiquitous.setLanguage(english);
     wordsToAdd.add(ubiquitous);
+
+    Word kuddelmuddel = new Word();
+    kuddelmuddel.setName("kuddelmuddel");
+    kuddelmuddel.setLanguage(german);
+    wordsToAdd.add(kuddelmuddel);
+
+    Word dingsbums = new Word();
+    dingsbums.setName("dingsbums");
+    dingsbums.setLanguage(german);
+    wordsToAdd.add(dingsbums);
+
+    Word wema = new Word();
+    wema.setName("wema");
+    wema.setLanguage(swahili);
+    wordsToAdd.add(wema);
+
+    Word pamplemousse = new Word();
+    pamplemousse.setName("pamplemousse");
+    pamplemousse.setLanguage(french);
+    wordsToAdd.add(pamplemousse);
+
+    Word discombobulated = new Word();
+    discombobulated.setName("discombobulated");
+    dingsbums.setLanguage(english);
+    wordsToAdd.add(discombobulated);
 
     if (!wordRepo.findAll().iterator().hasNext()) {
       wordRepo.saveAll(wordsToAdd);

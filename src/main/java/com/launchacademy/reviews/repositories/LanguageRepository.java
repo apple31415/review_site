@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LanguageRepository extends CrudRepository<Language, Integer> {
-  public Language findByLanguage(String language);
+  public Language findByName(String name);
 }

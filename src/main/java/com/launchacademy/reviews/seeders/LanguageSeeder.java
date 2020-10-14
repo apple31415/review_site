@@ -20,28 +20,28 @@ public class LanguageSeeder {
   public void seed() {
     List<Language> languagesToAdd = new ArrayList<>();
     Language english = new Language();
-    english.setLanguage("English");
+    english.setName("English");
     languagesToAdd.add(english);
     Language french = new Language();
-    french.setLanguage("French");
+    french.setName("French");
     languagesToAdd.add(french);
     Language german = new Language();
-    german.setLanguage("German");
+    german.setName("German");
     languagesToAdd.add(german);
     Language quechua = new Language();
-    quechua.setLanguage("Quechua");
+    quechua.setName("Quechua");
     languagesToAdd.add(quechua);
     Language powhatan = new Language();
-    powhatan.setLanguage("Powhatan");
+    powhatan.setName("Powhatan");
     languagesToAdd.add(powhatan);
     Language tagalog = new Language();
-    tagalog.setLanguage("Tagalog");
+    tagalog.setName("Tagalog");
     languagesToAdd.add(tagalog);
     Language swahili = new Language();
-    swahili.setLanguage("Swahili");
+    swahili.setName("Swahili");
     languagesToAdd.add(swahili);
     Language korean = new Language();
-    korean.setLanguage("Korean");
+    korean.setName("Korean");
     languagesToAdd.add(korean);
 
     if (!languageRepo.findAll().iterator().hasNext()) {
