@@ -23,7 +23,7 @@ const WordShow = (props) => {
     <div>
       <h1>Words Words Words</h1>
       <p>Word: {word.name}</p>
-      <p>Definition: {word.deffinition}</p>
+      <p>Definition: {word.definition}</p>
       <p>Language: {word.name_id}</p>
       {reviewForm}
     </div>
