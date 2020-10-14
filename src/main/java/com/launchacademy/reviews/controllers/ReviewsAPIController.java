@@ -1,6 +1,9 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.Review;
+import com.launchacademy.reviews.models.Word;
+import com.launchacademy.reviews.repositories.ReviewRepository;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,7 @@ public class ReviewsAPIController {
   }
 
   @GetMapping
-  public List<Review> getAllReviews(){
-    return reviewRepository.getAllByWord();
+  public Iterable<Review> getAllReviews(){
+    return reviewRepository.findAll();
   }
 }

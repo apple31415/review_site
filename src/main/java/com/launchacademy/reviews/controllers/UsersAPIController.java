@@ -1,6 +1,7 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.User;
+import com.launchacademy.reviews.repositories.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class UsersAPIController {
   }
 
   @GetMapping
-  public List<User> getAllUsers(){
+  public Iterable<User> getAllUsers(){
     return userRepository.findAll();
   }
 }
