@@ -4,17 +4,15 @@ import { Link } from "react-router-dom"
 const WordsContainer = (props) => {
   const [words, setWords] = useState([])
 
-  let wordType = props.match.params.words
-
   useEffect(() => {
-    fetch('api/v1/words')
+    fetch('/api/v1/words')
     .then(result => result.json())
     .then(words => {
       setWords(words)
     })
-  }, [wordType])
+  }, [])
   
-  let WordsElements = mappedWords.map((word, index) => {
+  let WordsElements = words.map((word, index) => {
     return(
       <div key={index}>
         <Link to={`/words/${word.id}`}>
