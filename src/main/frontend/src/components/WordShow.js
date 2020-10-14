@@ -24,11 +24,7 @@ const WordShow = (props) => {
       <h1>Words Words Words</h1>
       <p>Word: {word.name}</p>
       <p>Definition: {word.definition}</p>
-<<<<<<< HEAD
-      <p>Language: {word.name_id}</p>
-=======
       <p>Language: {word.language.name}</p>
->>>>>>> wordShowPage
       {reviewForm}
     </div>
   )
