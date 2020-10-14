@@ -1,4 +1,4 @@
 CREATE TABLE languages (
 id SERIAL PRIMARY KEY,
-name VARCHAR NOT NULL
+language VARCHAR NOT NULL
 );
