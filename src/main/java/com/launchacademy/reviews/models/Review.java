@@ -1,5 +1,6 @@
 package com.launchacademy.reviews.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,9 +35,11 @@ public class Review {
 
   @ManyToOne
   @JoinColumn(name="word_id", nullable = false)
+  @JsonIgnoreProperties("reviews")
   private Word word;
 
   @ManyToOne
   @JoinColumn(name="user_id", nullable = false)
+  @JsonIgnoreProperties("reviews")
   private User user;
 }

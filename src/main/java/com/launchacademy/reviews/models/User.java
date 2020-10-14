@@ -1,7 +1,9 @@
 package com.launchacademy.reviews.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,6 +38,7 @@ public class User {
   @Column(name = "email", nullable = false)
   private String email;
 
-  @OneToMany(mappedBy = "user")
-  private List<Review> reviews = new ArrayList<Review>();
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("user")
+  private List<Review> reviews;
 }
