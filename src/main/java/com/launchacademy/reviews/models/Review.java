@@ -42,4 +42,7 @@ public class Review {
   @JoinColumn(name="user_id", nullable = false)
   @JsonIgnoreProperties("reviews")
   private User user;
+
+  public void setWord(Word word) {
+  }
 }
