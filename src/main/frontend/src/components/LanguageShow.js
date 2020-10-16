@@ -1,4 +1,3 @@
-import { words } from 'lodash';
 import React, {useState, useEffect } from 'react'
 
 const LanguageShow = (props) => {

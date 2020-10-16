@@ -1,24 +1,29 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import _ from "lodash";
 
 const WordReviewForm = props => {
+  const [users, setUsers] = useState([])
   const [reviewForm, setReviewForm] = useState({
-      user:{
-        userName: "Apple31415",
-        name: "Ashley",
-        email: "email@gmail.com",
-        reviews: []
-      },
+      userId: "",
       word: props.word,
       rating: '',
       comment: ''
   })
 
+  useEffect(() => {
+    fetch(`/api/v1/users`)
+      .then (result => {
+        return result.json()
+      })
+      .then(users => {
+        setUsers(users)
+      })
+  }, [])
+
   let requiredFields = {
-    user : "User",
+    userId : "User",
     word : "word",
     rating : "Rating",
-  
   }
   const [errors, setErrors] = useState({})
 
@@ -44,17 +49,23 @@ const WordReviewForm = props => {
         }
       }
     }
+
     let id = props.id
     setErrors(formErrors)
     if (_.isEmpty(errors)) {
-      fetch(`/api/v1/words/${id}`, {
+      let formData = {
+        rating: reviewForm.rating,
+        comment: reviewForm.comment,
+        userId: reviewForm.userId
+      }
+      fetch(`/api/v1/words/${id}/reviews`, {
         method:"POST",
-        body: JSON.stringify(reviewForm),
+        body: JSON.stringify(formData),
         headers: {"Content-Type" : "application/json"}
       })
       .then(result => {
         setReviewForm({
-          user: '',
+          userId: '',
           rating: '',
           comment: ''
       })
@@ -62,14 +73,20 @@ const WordReviewForm = props => {
       })
     } 
   }
+  let startingUsers = [<option value=""></option>]
+  let mappedUsers = startingUsers.concat(users.map(user => {
+    return <option value={user.id}>{user.username}</option>
+  }))
 
   return(
     <>
     <button onClick={handleClose}>Close</button>
       <form onSubmit={handleSubmit}>
         <label>User
-          <p className="error">{errors.user}</p>
-          <input type="text" name="user" id="user" value={reviewForm.name} />
+          <p className="error">{errors.userId}</p>
+          <select onChange={handleChange} name="userId" id="userId" value={reviewForm.userId}>
+            {mappedUsers}
+          </select>
         </label>
         <label>Rating
           <p className="error">{errors.rating}</p>

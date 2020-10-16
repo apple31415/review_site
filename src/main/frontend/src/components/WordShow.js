@@ -8,7 +8,6 @@ const WordShow = (props) => {
   const [displayForm, setDisplayForm] = useState([])
   const [reviewStatus, setReviewStatus] = useState([])
   
-
   useEffect(() => {
     fetch(`/api/v1/words/${id}`)
       .then(result => {
@@ -17,7 +16,7 @@ const WordShow = (props) => {
       .then(word => {
         setWord(word)
       })
-  }, []);
+  }, [])
 
   const handleReviewClick = () => {
     let formState = displayForm === true ? false : true

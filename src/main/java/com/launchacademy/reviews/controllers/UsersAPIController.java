@@ -2,7 +2,6 @@ package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.User;
 import com.launchacademy.reviews.repositories.UserRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,4 +16,11 @@ public class UsersAPIController {
   public UsersAPIController(UserRepository userRepository){
     this.userRepository = userRepository;
   }
+
+  @GetMapping
+  public Iterable<User> getAll(){
+    return userRepository.findAll();
+  }
 }
+
+

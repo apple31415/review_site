@@ -1,11 +1,12 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.Review;
+import com.launchacademy.reviews.models.ReviewForm;
 import com.launchacademy.reviews.models.Word;
 import com.launchacademy.reviews.repositories.LanguageRepository;
 import com.launchacademy.reviews.repositories.ReviewRepository;
+import com.launchacademy.reviews.repositories.UserRepository;
 import com.launchacademy.reviews.repositories.WordRepository;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,13 +21,16 @@ public class WordsAPIController {
   private final WordRepository wordRepository;
   private final LanguageRepository languageRepository;
   private final ReviewRepository reviewRepository;
+  private final UserRepository userRepository;
 
   @Autowired
   public WordsAPIController(WordRepository wordRepository, LanguageRepository languageRepository,
-      ReviewRepository reviewRepository){
+      ReviewRepository reviewRepository,
+      UserRepository userRepository){
     this.wordRepository = wordRepository;
     this.languageRepository = languageRepository;
     this.reviewRepository = reviewRepository;
+    this.userRepository = userRepository;
   }
 
   @GetMapping
@@ -39,10 +43,13 @@ public class WordsAPIController {
     return wordRepository.findById(id).get();
   }
 
-  @PostMapping("/{id}")
-  public Review newReview(@RequestBody Review review, @PathVariable Integer id) {
-    Optional<Word> word = wordRepository.findById(id);
-    review.setWord(word.get());
-    return reviewRepository.save(review);
+  @PostMapping("/{id}/reviews")
+  public Review newReview(@RequestBody ReviewForm review, @PathVariable Integer id) {
+    Review newReview = new Review();
+    newReview.setRating(review.getRating());
+    newReview.setUser(userRepository.findById(review.getUserId()).get());
+    newReview.setComment(review.getComment());
+    newReview.setWord(wordRepository.findById(id).get());
+    return reviewRepository.save(newReview);
   }
 }
