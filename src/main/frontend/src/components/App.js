@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Navbar from './Navbar.js';
 import WordsContainer from './WordsContainer.js';
 import WordShow from './WordShow.js';
+import WordForm from './WordForm.js';
 
 function App() {
   return (
@@ -10,13 +11,19 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Route path="/words/:id">
+        <Route exact path="/words/new">
+          <WordForm />
+        </Route>
+
+        <Route exact path="/words/:id">
           <WordShow />
         </Route>
 
-        <Route path="/words">
+        <Route exact path="/words">
           <WordsContainer />
         </Route>
+
+
       </Switch>
     </>
   )
