@@ -45,7 +45,6 @@ public class WordsAPIController {
     return wordRepository.findById(id).get();
   }
 
-
   @PostMapping
   public Word createNewWord(@RequestBody WordForm wordForm) {
     Word newWord = new Word();
