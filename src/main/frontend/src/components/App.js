@@ -9,21 +9,10 @@ function App() {
   return (
     <>
       <Navbar />
-
       <Switch>
-        <Route exact path="/words/new">
-          <WordForm />
-        </Route>
-
-        <Route exact path="/words/:id">
-          <WordShow />
-        </Route>
-
-        <Route exact path="/words">
-          <WordsContainer />
-        </Route>
-
-
+        <Route exact path="/words/new"><WordForm /></Route>
+        <Route exact path="/words/:id"><WordShow /></Route>
+        <Route exact path="/words"><WordsContainer /></Route>
       </Switch>
     </>
   )
