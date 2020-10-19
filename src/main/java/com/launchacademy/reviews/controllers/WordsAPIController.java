@@ -45,6 +45,14 @@ public class WordsAPIController {
     return wordRepository.findById(id).get();
   }
 
+  @PostMapping
+  public Word createNewWord(@RequestBody WordForm wordForm) {
+    Word newWord = new Word();
+    newWord.setName(wordForm.getName());
+    newWord.setDefinition(wordForm.getDefinition());
+    newWord.setLanguage(languageRepository.findByName(wordForm.getLanguageName()));
+    return wordRepository.save(newWord);
+  }
   @GetMapping("/{id}/reviews")
   public List<Review> getAllReviewsById(@PathVariable Integer id) {return wordRepository.findById(id).get().getReviews(); }
 
@@ -56,5 +64,6 @@ public class WordsAPIController {
     newReview.setComment(review.getComment());
     newReview.setWord(wordRepository.findById(id).get());
     return reviewRepository.save(newReview);
+
   }
 }

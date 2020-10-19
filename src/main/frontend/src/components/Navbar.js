@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="top-bar">
+    <div className="top-bar" id="navbar">
       <div className="top-bar-left">
-        <ul className="menu">
+        <ul className="menu" id="menu">
           <li><Link to="/words"><strong>Word Up</strong></Link></li>
           <li><Link to="/words/new">Submit a New Word</Link></li>
           <li><Link to="/users/new">Make a User Profile</Link></li>
