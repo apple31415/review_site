@@ -14,7 +14,7 @@ const WordsContainer = (props) => {
   
   let WordsElements = words.map((word, index) => {
     return(
-      <div key={index}>
+      <div key={index} id="one-word">
         <Link to={`/words/${word.id}`}>
           <h4>Word: {word.name}</h4>
         </Link>
@@ -24,7 +24,7 @@ const WordsContainer = (props) => {
   })
 
   return (
-    <div id="each-word">
+    <div>
       {WordsElements}
     </div>
   )

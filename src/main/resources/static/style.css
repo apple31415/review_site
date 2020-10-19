@@ -17,11 +17,15 @@ body {
   color: var(--lightPink);
 }
 
-#each-word {
-  border: 5px solid var(--purple;
+#one-word {
+  background-color: var(--offWhite);
+  width: 20%;
+  border: 3px solid var(--purple);
+  border-radius: 10px;
+  margin: 3em auto;
+  padding 10px 10px;
 }
 
 .error {
   color: darkRed;
 }
-
