@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="top-bar">
       <div className="top-bar-left">
-        <ul className="menu">
+        <ul className="menu" id="menu">
           <li><Link to="/words"><strong>Word Up</strong></Link></li>
           <li><Link to="/languages">View All Languages</Link></li>
           <li><Link to="/words/new">Submit a New Word</Link></li>

@@ -24,7 +24,7 @@ const WordsContainer = (props) => {
   })
 
   return (
-    <div>
+    <div id="each-word">
       {WordsElements}
     </div>
   )

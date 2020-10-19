@@ -36,9 +36,6 @@ public class WordsAPIController {
 
   @PostMapping
   public Word createNewWord(@RequestBody WordForm wordForm){
-    System.out.println("Fancy pants: " + wordForm.getLanguageName());
-    System.out.println("name: " + wordForm.getName());
-    System.out.println("definition: " + wordForm.getDefinition());
     Word newWord = new Word();
     newWord.setName(wordForm.getName());
     newWord.setDefinition(wordForm.getDefinition());

@@ -1,3 +1,31 @@
-body {
-  background-color: lightblue;
+:root {
+  --darkRed: #8d0801;
+  --red: #bf0603;
+  --beige: #f4d58d;
+  --lightBlue: #708d81;
+  --darkBlue: #001427;
 }
+
+body {
+  background-color: var(--beige);
+  color: var(--red);
+  text-align: center;
+}
+
+.menu {
+  background-color: var(--darkRed);
+  color: var(--lightBlue);
+}
+
+#each-word {
+  border: 5px solid black;
+}
+
+#menu{
+  background-color: var(--darkRed);
+}
+
+
+
+
+
