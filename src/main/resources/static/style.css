@@ -1,28 +1,28 @@
 :root {
-  --darkRed: #8d0801;
-  --red: #bf0603;
-  --beige: #f4d58d;
-  --lightBlue: #708d81;
-  --darkBlue: #001427;
+  --darkGreen: #a3a380;
+  --lightGreen: #d6ce93;
+  --offWhite: #efebce;
+  --lightPink: #d8a48f;
+  --purple: #bb8588;
 }
 
 body {
-  background-color: var(--beige);
-  color: var(--red);
+  background-color: var(--lightGreen);
+  color: var(--purple);
   text-align: center;
 }
 
-.menu {
-  background-color: var(--darkRed);
-  color: var(--lightBlue);
+#navbar {
+  background-color: var(--darkGreen);
+  color: var(--lightPink);
 }
 
 #each-word {
-  border: 5px solid black;
+  border: 5px solid var(--purple;
 }
 
-#menu{
-  background-color: var(--darkRed);
+.error {
+  color: darkRed;
 }
 
 
