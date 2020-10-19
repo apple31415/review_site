@@ -8,6 +8,7 @@ import com.launchacademy.reviews.repositories.LanguageRepository;
 import com.launchacademy.reviews.repositories.ReviewRepository;
 import com.launchacademy.reviews.repositories.UserRepository;
 import com.launchacademy.reviews.repositories.WordRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,9 @@ public class WordsAPIController {
   public Word getById(@PathVariable Integer id){
     return wordRepository.findById(id).get();
   }
+
+  @GetMapping("/{id}/reviews")
+  public List<Review> getAllReviewsById(@PathVariable Integer id) {return wordRepository.findById(id).get().getReviews(); }
 
   @PostMapping("/{id}/reviews")
   public Review newReview(@RequestBody ReviewForm review, @PathVariable Integer id) {

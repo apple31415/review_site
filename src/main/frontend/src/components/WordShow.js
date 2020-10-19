@@ -5,6 +5,7 @@ import WordReviewForm from "./WordReviewForm"
 const WordShow = (props) => {
   let { id } = useParams();
   const [word, setWord] = useState([])
+  const [reviews, setReviews] = useState([])
   const [displayForm, setDisplayForm] = useState([])
   const [reviewStatus, setReviewStatus] = useState([])
   
@@ -15,6 +16,16 @@ const WordShow = (props) => {
       })
       .then(word => {
         setWord(word)
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch(`/api/v1/words/${id}/reviews`)
+      .then(result => {
+        return result.json()
+      })
+      .then(reviews => {
+        setReviews(reviews)
       })
   }, [])
 
@@ -32,6 +43,11 @@ const WordShow = (props) => {
       setReviewStatus={setReviewStatus}
       setDisplayForm={setDisplayForm} /> : <button onClick={handleReviewClick}>Review Me!</button>
     }
+
+    let mappedReviews = reviews.map(review => {
+      return <div>Username: {review.user.username}<br/>Rating: {review.rating}<br/>Review: {review.comment}
+      </div>
+    })
   
   return (
     <div>
@@ -43,6 +59,9 @@ const WordShow = (props) => {
       </div>
       <div>
         {reviewForm}
+      </div>
+      <div>
+        {mappedReviews}
       </div>
     </div>
   )
