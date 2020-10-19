@@ -4,6 +4,7 @@ import Navbar from './Navbar.js';
 import WordsContainer from './WordsContainer.js';
 import WordShow from './WordShow.js';
 import WordForm from './WordForm.js';
+import NewUserForm from './NewUserForm.js';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/words/new"><WordForm /></Route>
         <Route exact path="/words/:id"><WordShow /></Route>
         <Route exact path="/words"><WordsContainer /></Route>
+        <Route exact path="/users/new"><NewUserForm /></Route>
       </Switch>
     </>
   )
