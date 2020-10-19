@@ -9,17 +9,20 @@ public class Seeder implements CommandLineRunner {
 
   private WordSeeder wordSeeder;
   private LanguageSeeder languageSeeder;
+  private UserSeeder userSeeder;
 
   @Autowired
   public Seeder(WordSeeder wordSeeder,
-      LanguageSeeder languageSeeder) {
+      LanguageSeeder languageSeeder, UserSeeder userSeeder) {
     this.wordSeeder = wordSeeder;
     this.languageSeeder = languageSeeder;
+    this.userSeeder = userSeeder;
   }
 
   @Override
   public void run(String... args) throws Exception {
     languageSeeder.seed();
     wordSeeder.seed();
+    userSeeder.seed();
   }
 }

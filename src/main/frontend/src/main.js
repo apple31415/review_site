@@ -6,7 +6,7 @@ import App from './components/App.js';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route path="/words">
+    <Route path={["/words", "/users"]}>
       <App />
     </Route>
     <Route exact path="/">
