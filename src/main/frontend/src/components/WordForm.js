@@ -53,7 +53,7 @@ const WordForm = props => {
         <div className="grid-x grid-padding-x">
           <div className="medium-6 cell">
             <label>Word
-          <input
+              <input
                 required
                 type="text"
                 name="name"
@@ -64,7 +64,7 @@ const WordForm = props => {
           </div>
           <div className="medium-6 cell">
             <label>Definition
-          <input
+              <input
                 required
                 type="text"
                 name="definition"
