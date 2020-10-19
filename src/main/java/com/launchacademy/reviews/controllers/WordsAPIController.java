@@ -3,6 +3,7 @@ package com.launchacademy.reviews.controllers;
 import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.ReviewForm;
 import com.launchacademy.reviews.models.Word;
+import com.launchacademy.reviews.models.WordForm;
 import com.launchacademy.reviews.repositories.LanguageRepository;
 import com.launchacademy.reviews.repositories.ReviewRepository;
 import com.launchacademy.reviews.repositories.UserRepository;
