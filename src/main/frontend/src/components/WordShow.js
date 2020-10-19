@@ -27,7 +27,7 @@ const WordShow = (props) => {
       .then(reviews => {
         setReviews(reviews)
       })
-  }, [])
+  }, [displayForm])
 
   const handleReviewClick = () => {
     let formState = displayForm === true ? false : true

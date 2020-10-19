@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import _ from "lodash";
 import { useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const WordReviewForm = props => {
   const [users, setUsers] = useState([])
-  const [history, setHistory] = useState([])
   const [reviewForm, setReviewForm] = useState({
       userId: "",
       word: props.word,
@@ -40,6 +40,8 @@ const WordReviewForm = props => {
     props.setDisplayForm(false)
   }
 
+  let id = props.id
+
   const handleSubmit = (event) => {
     event.preventDefault()
     let formErrors = {}
@@ -52,7 +54,6 @@ const WordReviewForm = props => {
       }
     }
 
-    let id = props.id
     setErrors(formErrors)
     if (_.isEmpty(errors)) {
       let formData = {
@@ -73,8 +74,8 @@ const WordReviewForm = props => {
       })
         props.setReviewStatus("Thanks for your comment!")
       })
-      .then(word => {
-        history.pushState(`/words/${id}`)
+      .then(() => {
+        props.setDisplayForm(false)
       })
     } 
   }
