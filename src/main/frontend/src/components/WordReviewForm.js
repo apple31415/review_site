@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom'
 
 const WordReviewForm = props => {
   const [users, setUsers] = useState([])
-  const [history, setHistory] = useState([])
   const [reviewForm, setReviewForm] = useState({
       userId: "",
       word: props.word,
@@ -73,8 +72,8 @@ const WordReviewForm = props => {
       })
         props.setReviewStatus("Thanks for your comment!")
       })
-      .then(word => {
-        history.pushState(`/words/${id}`)
+      .then( ()=>{
+        window.location.reload()
       })
     } 
   }
