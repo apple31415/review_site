@@ -70,7 +70,7 @@ const WordShow = (props) => {
         {showMeTheMoney === review.id ?
         (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick}  setDisplayForm={setDisplayForm} id = {word.id} setShowMeTheMoney={setShowMeTheMoney}/>) : null 
         }     
-        </>
+      </>
       )
     })
   
