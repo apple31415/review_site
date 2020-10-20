@@ -65,15 +65,14 @@ public class WordsAPIController {
     newReview.setComment(review.getComment());
     newReview.setWord(wordRepository.findById(id).get());
     return reviewRepository.save(newReview);
-
   }
 
   @PutMapping
-  public Word createNewWord(@RequestBody WordForm wordForm) {
-    Word newWord = new Word();
-    newWord.setName(wordForm.getName());
-    newWord.setDefinition(wordForm.getDefinition());
-    newWord.setLanguage(languageRepository.findByName(wordForm.getLanguageName()));
-    return wordRepository.save(newWord);
+  public Word editWord(@RequestBody WordForm wordForm) {
+    Word word = wordRepository.findById(wordForm.getWordId()).get();
+    word.setName(wordForm.getName());
+    word.setDefinition(wordForm.getDefinition());
+    word.setLanguage(languageRepository.findByName(wordForm.getLanguageName()));
+    return wordRepository.save(word);
   }
 }

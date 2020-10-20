@@ -40,11 +40,17 @@ const WordForm = props => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newWord),
+      body: JSON.stringify({...newWord, wordId: props.word ? props.word.id : -1 })
     })
       .then(() => {
-        clearForm();
-      });
+        clearForm()
+        handleRefreshClick()
+      })
+  }
+
+  const handleRefreshClick = () => {
+    let refreshWord = props.refreshWord === true ? false : true
+    props.setRefreshWord(refreshWord)
   }
 
   let form = (

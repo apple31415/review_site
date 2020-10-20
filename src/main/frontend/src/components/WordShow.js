@@ -10,7 +10,8 @@ const WordShow = (props) => {
   const [displayForm, setDisplayForm] = useState([])
   const [reviewStatus, setReviewStatus] = useState([])
   const [showEditForm, setShowEditForm] = useState(false)
-  
+  const [refreshWord, setRefreshWord] = useState(false)
+
   useEffect(() => {
     fetch(`/api/v1/words/${id}`)
       .then(result => {
@@ -19,7 +20,7 @@ const WordShow = (props) => {
       .then(word => {
         setWord(word)
       })
-  }, [])
+  }, [refreshWord])
 
   useEffect(() => {
     fetch(`/api/v1/words/${id}/reviews`)
@@ -42,7 +43,7 @@ const WordShow = (props) => {
   }
 
   let editForm = showEditForm === true ?
-  (<WordForm word={word}/>) : null
+  (<WordForm word={word} setRefreshWord={setRefreshWord} refreshWord={refreshWord}/>) : null
 
   let reviewForm
   if(reviewStatus === "pending") reviewForm = "Thanks for your Review!" 
