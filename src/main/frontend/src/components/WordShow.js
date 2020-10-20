@@ -8,7 +8,7 @@ const WordShow = (props) => {
   const [word, setWord] = useState([])
   const [reviews, setReviews] = useState([])
   const [displayForm, setDisplayForm] = useState([])
-  const [showMeTheMoney, setShowMeTheMoney] = useState(false)
+  const [showMeTheMoney, setShowMeTheMoney] = useState(null)
   const [showEditForm, setShowEditForm] = useState(false)
   const [refreshWord, setRefreshWord] = useState(false)
 
@@ -37,8 +37,8 @@ const WordShow = (props) => {
     setShowEditForm(editClick)
   }
 
-  const handleShowMoneyClick = () => {
-    let editClick = showMeTheMoney === true ? false : true
+  const handleShowMoneyClick = (reviewId) => {
+    let editClick = showMeTheMoney ? null : reviewId
     setShowMeTheMoney(editClick)
   }
 
@@ -62,14 +62,14 @@ const WordShow = (props) => {
       <>
         <div>
           <br/>
-          <button onClick={handleShowMoneyClick}>Edit&nbsp;&nbsp;</button>
+          <button onClick={() => {handleShowMoneyClick(review.id)}}>Edit&nbsp;&nbsp;</button>
           <button>Delete</button><br/>
           Username: {review.user.username}<br/>
           Rating: {review.rating}<br/>
           Review: {review.comment}
         </div>
-        {showMeTheMoney === true ?
-        (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick}  setDisplayForm={setDisplayForm} id = {word.id}/>) : null 
+        {showMeTheMoney === review.id ?
+        (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick}  setDisplayForm={setDisplayForm} id = {word.id} setShowMeTheMoney={setShowMeTheMoney}/>) : null 
         }     
         </>
       )

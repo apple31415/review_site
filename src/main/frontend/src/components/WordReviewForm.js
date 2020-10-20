@@ -36,6 +36,7 @@ const WordReviewForm = props => {
 
   const handleClose = () => {
     props.setDisplayForm(false)
+    props.setShowMeTheMoney(null)
   }
 
   let id = props.id
