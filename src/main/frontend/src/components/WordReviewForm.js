@@ -5,10 +5,10 @@ const WordReviewForm = props => {
   const [users, setUsers] = useState([])
   const [errors, setErrors] = useState({})
   const [reviewForm, setReviewForm] = useState({
-      userId: "",
+      userId: props.review?.user.id,
       word: props.word,
-      rating: '',
-      comment: ''
+      rating: props.review?.rating,
+      comment: props.review?.comment
   })
 
   useEffect(() => {
@@ -60,8 +60,9 @@ const WordReviewForm = props => {
         userId: reviewForm.userId
       }
       fetch(`/api/v1/words/${id}/reviews`, {
-        method:"POST",
-        body: JSON.stringify(formData),
+        method: props.review ? "PUT" : "POST",
+        body: JSON.stringify({
+          ...formData, reviewId : props.review ? props.review.id : -1}),
         headers: {"Content-Type" : "application/json"}
       })
       .then(result => {
@@ -70,10 +71,10 @@ const WordReviewForm = props => {
           rating: '',
           comment: ''
       })
-        props.setReviewStatus("Thanks for your comment!")
       })
       .then(() => {
         props.setDisplayForm(false)
+        props.handleReviewClick()
       })
     } 
   }
