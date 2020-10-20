@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class ReviewForm {
+  private Integer reviewId;
   private Integer rating;
   private String comment;
   private Integer userId;

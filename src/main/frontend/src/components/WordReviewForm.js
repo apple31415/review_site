@@ -5,10 +5,10 @@ const WordReviewForm = props => {
   const [users, setUsers] = useState([])
   const [errors, setErrors] = useState({})
   const [reviewForm, setReviewForm] = useState({
-    userId: "",
-    word: props.word,
-    rating: '',
-    comment: ''
+      userId: props.review?.user.id,
+      word: props.word,
+      rating: props.review?.rating,
+      comment: props.review?.comment
   })
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const WordReviewForm = props => {
 
   const handleClose = () => {
     props.setDisplayForm(false)
+    props.setShowMeTheMoney(null)
   }
 
   let id = props.id
@@ -60,22 +61,23 @@ const WordReviewForm = props => {
         userId: reviewForm.userId
       }
       fetch(`/api/v1/words/${id}/reviews`, {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" }
+        method: props.review ? "PUT" : "POST",
+        body: JSON.stringify({
+          ...formData, reviewId : props.review ? props.review.id : -1}),
+        headers: {"Content-Type" : "application/json"}
       })
-        .then(result => {
-          setReviewForm({
-            userId: '',
-            rating: '',
-            comment: ''
-          })
-          props.setReviewStatus("Thanks for your comment!")
-        })
-        .then(() => {
-          props.setDisplayForm(false)
-        })
-    }
+      .then(result => {
+        setReviewForm({
+          userId: '',
+          rating: '',
+          comment: ''
+      })
+      })
+      .then(() => {
+        props.setDisplayForm(false)
+        props.handleReviewClick()
+      })
+    } 
   }
   let startingUsers = [<option key="-1" value=""></option>]
   let mappedUsers = startingUsers.concat(users.map(user => {
