@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import WordReviewForm from "./WordReviewForm"
+import WordForm from "./WordForm"
 
 const WordShow = (props) => {
   let { id } = useParams();
@@ -8,6 +9,7 @@ const WordShow = (props) => {
   const [reviews, setReviews] = useState([])
   const [displayForm, setDisplayForm] = useState([])
   const [reviewStatus, setReviewStatus] = useState([])
+  const [showEditForm, setShowEditForm] = useState(false)
   
   useEffect(() => {
     fetch(`/api/v1/words/${id}`)
@@ -29,10 +31,18 @@ const WordShow = (props) => {
       })
   }, [displayForm])
 
+  const handleEditClick = () => {
+    let editClick = showEditForm === true ? false : true
+    setShowEditForm(editClick)
+  }
+
   const handleReviewClick = () => {
     let formState = displayForm === true ? false : true
     setDisplayForm(formState)
   }
+
+  let editForm = showEditForm === true ?
+  (<WordForm word={word}/>) : null
 
   let reviewForm
   if(reviewStatus === "pending") reviewForm = "Thanks for your Review!" 
@@ -56,6 +66,11 @@ const WordShow = (props) => {
         <p>Word: {word.name}</p>
         <p>Definition: {word.definition}</p>
         <p>Language: {word.language?.name}</p>
+        <button onClick={handleEditClick}>Edit&nbsp;</button>
+        <button>Delete</button>
+      </div>
+      <div>
+        {editForm}
       </div>
       <div>
         {reviewForm}
