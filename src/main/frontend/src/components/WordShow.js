@@ -56,7 +56,6 @@ const WordShow = (props) => {
       word = {word}
       setDisplayForm={setDisplayForm} /> : <button onClick={handleReviewClick}>Review Me!</button>
     
-
     let mappedReviews = reviews.map(review => {
       return (
       <>
