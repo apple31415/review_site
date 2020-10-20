@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
 import _ from "lodash";
-import { useHistory } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
 
 const WordReviewForm = props => {
   const [users, setUsers] = useState([])
+  const [errors, setErrors] = useState({})
   const [reviewForm, setReviewForm] = useState({
       userId: "",
       word: props.word,
@@ -27,7 +26,6 @@ const WordReviewForm = props => {
     word : "word",
     rating : "Rating",
   }
-  const [errors, setErrors] = useState({})
 
   const handleChange=(event) => {
     setReviewForm({

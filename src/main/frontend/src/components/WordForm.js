@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 const WordForm = props => {
   const [languagesList, setLanguagesList] = useState([]);
   const [newWord, setNewWord] = useState({
-    name: "",
-    definition: "",
-    languageName: ""
+    name: props.word?.name,
+    definition: props.word?.definition,
+    languageName: props.word?.language?.name
   });
 
   useEffect(() => {
@@ -36,18 +36,24 @@ const WordForm = props => {
   const onSubmit = event => {
     event.preventDefault()
     fetch("/api/v1/words", {
-      method: "POST",
+      method: props.word ? "PUT" : "POST",
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newWord),
+      body: JSON.stringify({...newWord, wordId: props.word ? props.word.id : -1 })
     })
       .then(() => {
-        clearForm();
-      });
+        clearForm()
+        handleRefreshClick()
+      })
   }
 
-  return (
+  const handleRefreshClick = () => {
+    let refreshWord = props.refreshWord === true ? false : true
+    props.setRefreshWord(refreshWord)
+  }
+
+  let form = (
     <form onSubmit={onSubmit}>
       <div className="grid-container">
         <div className="grid-x grid-padding-x">
@@ -92,7 +98,9 @@ const WordForm = props => {
         </div>
       </div>
     </form>
-  );
+  )
+
+  return form
 }
 
-export default WordForm;
+export default WordForm
