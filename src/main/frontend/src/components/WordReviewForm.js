@@ -6,15 +6,15 @@ import { Redirect } from 'react-router-dom'
 const WordReviewForm = props => {
   const [users, setUsers] = useState([])
   const [reviewForm, setReviewForm] = useState({
-      userId: "",
-      word: props.word,
-      rating: '',
-      comment: ''
+    userId: "",
+    word: props.word,
+    rating: '',
+    comment: ''
   })
 
   useEffect(() => {
     fetch(`/api/v1/users`)
-      .then (result => {
+      .then(result => {
         return result.json()
       })
       .then(users => {
@@ -23,16 +23,16 @@ const WordReviewForm = props => {
   }, [])
 
   let requiredFields = {
-    userId : "User",
-    word : "word",
-    rating : "Rating",
+    userId: "User",
+    word: "word",
+    rating: "Rating",
   }
   const [errors, setErrors] = useState({})
 
-  const handleChange=(event) => {
+  const handleChange = (event) => {
     setReviewForm({
-      ...reviewForm, 
-      [event.target.name] : event.target.value
+      ...reviewForm,
+      [event.target.name]: event.target.value
     })
   }
 
@@ -46,10 +46,10 @@ const WordReviewForm = props => {
     event.preventDefault()
     let formErrors = {}
     for (let field of Object.keys(requiredFields)) {
-      if (!reviewForm[field]){
+      if (!reviewForm[field]) {
         formErrors = {
           ...formErrors,
-          [field] : `${requiredFields[field]} cannot be blank.`
+          [field]: `${requiredFields[field]} cannot be blank.`
         }
       }
     }
@@ -62,31 +62,31 @@ const WordReviewForm = props => {
         userId: reviewForm.userId
       }
       fetch(`/api/v1/words/${id}/reviews`, {
-        method:"POST",
+        method: "POST",
         body: JSON.stringify(formData),
-        headers: {"Content-Type" : "application/json"}
+        headers: { "Content-Type": "application/json" }
       })
-      .then(result => {
-        setReviewForm({
-          userId: '',
-          rating: '',
-          comment: ''
-      })
-        props.setReviewStatus("Thanks for your comment!")
-      })
-      .then(() => {
-        props.setDisplayForm(false)
-      })
-    } 
+        .then(result => {
+          setReviewForm({
+            userId: '',
+            rating: '',
+            comment: ''
+          })
+          props.setReviewStatus("Thanks for your comment!")
+        })
+        .then(() => {
+          props.setDisplayForm(false)
+        })
+    }
   }
-  let startingUsers = [<option value=""></option>]
+  let startingUsers = [<option key="-1" value=""></option>]
   let mappedUsers = startingUsers.concat(users.map(user => {
-    return <option value={user.id}>{user.username}</option>
+    return <option value={user.id} key={user.id}>{user.username}</option>
   }))
 
-  return(
+  return (
     <>
-    <button onClick={handleClose}>Close</button>
+      <button onClick={handleClose}>Close</button>
       <form onSubmit={handleSubmit}>
         <label>User
           <p className="error">{errors.userId}</p>
@@ -94,17 +94,25 @@ const WordReviewForm = props => {
             {mappedUsers}
           </select>
         </label>
-        <label>Rating
+        <div onChange={handleChange}>
+          <p>Rating:</p>
           <p className="error">{errors.rating}</p>
-          <select onChange={handleChange} type="text" name="rating" id="rating" value={reviewForm.rating}>
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </label>
+          <label>One
+            <input type="radio" id="rating" name="rating" value="1" />
+          </label>
+          <label>Two
+            <input type="radio" id="rating" name="rating" value="2" />
+          </label>
+          <label>Three
+            <input type="radio" id="rating" name="rating" value="3" />
+          </label>
+          <label>Four
+            <input type="radio" id="rating" name="rating" value="4" />
+          </label>
+          <label>Five
+            <input type="radio" id="rating" name="rating" value="5" />
+          </label>
+        </div>
         <label>Review
           <textarea onChange={handleChange} name="comment" id="comment" value={reviewForm.comment} />
         </label>
