@@ -56,7 +56,8 @@ const WordShow = (props) => {
     }
 
     let mappedReviews = reviews.map(review => {
-      return <div>Username: {review.user.username}<br/>Rating: {review.rating}<br/>Review: {review.comment}
+      return <div key={review.id}>Username: {review.user.username}<br/>Rating: {review
+      .rating}<br/>Review: {review.comment}
       </div>
     })
   
