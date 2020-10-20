@@ -75,4 +75,14 @@ public class WordsAPIController {
     word.setLanguage(languageRepository.findByName(wordForm.getLanguageName()));
     return wordRepository.save(word);
   }
+
+  @PutMapping("/{id}/reviews")
+  public Review editReview(@RequestBody ReviewForm review, @PathVariable Integer id) {
+    Review editReview = reviewRepository.findById(review.getReviewId()).get();
+    editReview.setRating(review.getRating());
+    editReview.setUser(userRepository.findById(review.getUserId()).get());
+    editReview.setComment(review.getComment());
+    editReview.setWord(wordRepository.findById(id).get());
+    return reviewRepository.save(editReview);
+  }
 }
