@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -64,6 +65,14 @@ public class WordsAPIController {
     newReview.setComment(review.getComment());
     newReview.setWord(wordRepository.findById(id).get());
     return reviewRepository.save(newReview);
+  }
 
+  @PutMapping
+  public Word editWord(@RequestBody WordForm wordForm) {
+    Word word = wordRepository.findById(wordForm.getWordId()).get();
+    word.setName(wordForm.getName());
+    word.setDefinition(wordForm.getDefinition());
+    word.setLanguage(languageRepository.findByName(wordForm.getLanguageName()));
+    return wordRepository.save(word);
   }
 }
