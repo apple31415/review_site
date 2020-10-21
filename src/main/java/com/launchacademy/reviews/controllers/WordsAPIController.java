@@ -10,6 +10,9 @@ import com.launchacademy.reviews.repositories.UserRepository;
 import com.launchacademy.reviews.repositories.WordRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -84,5 +87,11 @@ public class WordsAPIController {
     editReview.setComment(review.getComment());
     editReview.setWord(wordRepository.findById(id).get());
     return reviewRepository.save(editReview);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity deleteWord(@PathVariable Integer id){
+    wordRepository.deleteById(id);
+    return new ResponseEntity(HttpStatus.OK);
   }
 }
