@@ -22,7 +22,7 @@ const WordShow = (props) => {
       })
   }, [refreshWord])
 
-  useEffect(() => {
+  const refreshReviews = () => {
     fetch(`/api/v1/words/${id}/reviews`)
       .then(result => {
         return result.json()
@@ -30,6 +30,10 @@ const WordShow = (props) => {
       .then(reviews => {
         setReviews(reviews)
       })
+  }
+
+  useEffect(() => {
+    refreshReviews();
   }, [displayForm])
 
   const handleEditClick = () => {
@@ -47,6 +51,13 @@ const WordShow = (props) => {
     setDisplayForm(formState)
   }
 
+  const handleDeleteClick = (id) => {
+    fetch(`/api/v1/reviews/${id}`, {
+      method: 'DELETE'
+    })
+    .then(() => {refreshReviews()});
+  }
+
   let editForm = showEditForm === true ?
   (<WordForm word={word} setRefreshWord={setRefreshWord} refreshWord={refreshWord}/>) : null
 
@@ -62,7 +73,7 @@ const WordShow = (props) => {
         <div>
           <br/>
           <button onClick={() => {handleShowMoneyClick(review.id)}}>Edit&nbsp;&nbsp;</button>
-          <button>Delete</button><br/>
+          <button onClick={() => {handleDeleteClick(review.id)}}>Delete</button><br/>
           Username: {review.user.username}<br/>
           Rating: {review.rating}<br/>
           Review: {review.comment}
