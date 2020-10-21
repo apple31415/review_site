@@ -74,8 +74,7 @@ const WordReviewForm = props => {
       })
       })
       .then(() => {
-        props.setDisplayForm(false)
-        props.handleReviewClick()
+      handleClose()
       })
     } 
   }
@@ -94,23 +93,23 @@ const WordReviewForm = props => {
             {mappedUsers}
           </select>
         </label>
-        <div onChange={handleChange}>
+        <div>
           <p>Rating:</p>
           <p className="error">{errors.rating}</p>
           <label>One
-            <input type="radio" id="rating" name="rating" value="1" />
+            <input onChange={handleChange} type="radio" id="rating" name="rating" value="1" checked={reviewForm.rating == 1} />
           </label>
           <label>Two
-            <input type="radio" id="rating" name="rating" value="2" />
+            <input onChange={handleChange} type="radio" id="rating" name="rating" value="2" checked={reviewForm.rating == 2}/>
           </label>
           <label>Three
-            <input type="radio" id="rating" name="rating" value="3" />
+            <input onChange={handleChange} type="radio" id="rating" name="rating" value="3" checked={reviewForm.rating == 3}/>
           </label>
           <label>Four
-            <input type="radio" id="rating" name="rating" value="4" />
+            <input onChange={handleChange} type="radio" id="rating" name="rating" value="4" checked={reviewForm.rating == 4}/>
           </label>
           <label>Five
-            <input type="radio" id="rating" name="rating" value="5" />
+            <input onChange={handleChange} type="radio" id="rating" name="rating" value="5" checked={reviewForm.rating == 5}/>
           </label>
         </div>
         <label>Review
