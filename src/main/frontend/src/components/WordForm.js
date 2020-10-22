@@ -40,7 +40,7 @@ const WordForm = props => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({...newWord, wordId: props.word ? props.word.id : -1 })
+      body: JSON.stringify({ ...newWord, wordId: props.word ? props.word.id : -1 })
     })
       .then(() => {
         clearForm()
@@ -54,52 +54,34 @@ const WordForm = props => {
   }
 
   let form = (
-    <form onSubmit={onSubmit}>
-      <div className="grid-container">
-        <div className="grid-x grid-padding-x">
-          <div className="medium-6 cell">
-            <label>Word
-              <input
-                required
-                type="text"
-                name="name"
-                onChange={handleInputChange}
-                value={newWord.name}
-                placeholder="Your word here" />
-            </label>
+    < div className="row" >
+      <form className="col s12" onSubmit={onSubmit}>
+        <div className="row">
+          <div className="input-field col s6">
+            <input placeholder="Word" type="text" name="name" className="validate" onChange={handleInputChange}
+              value={newWord.name} required />
           </div>
-          <div className="medium-6 cell">
-            <label>Definition
-              <input
-                required
-                type="text"
-                name="definition"
-                onChange={handleInputChange}
-                value={newWord.definition}
-                placeholder="Enter the definition (optional)" />
-            </label>
-          </div>
-          <div>
-            <label>Select Language
-              <select
-                required
-                name="languageName"
-                onChange={handleInputChange}
-                value={newWord.languageName}>
-                <option key="0" value="" name="languageName">
-                  Select a Language</option>
-                {dropdown}
-              </select>
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Submit" />
+          <div className="input-field col s6">
+            <input placeholder="Definition" type="text" className="validate" name="definition"
+              onChange={handleInputChange}
+              value={newWord.definition} required />
           </div>
         </div>
-      </div>
-    </form>
+        <div className="input-field col s12">
+          <select required
+            name="languageName"
+            onChange={handleInputChange}
+            value={newWord.languageName}>
+            <option value="">Language</option>
+            {dropdown}
+          </select>
+        </div>
+        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i className="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
   )
-
   return form
 }
 
