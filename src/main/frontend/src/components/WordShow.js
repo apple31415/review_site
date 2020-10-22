@@ -75,7 +75,7 @@ const WordShow = (props) => {
     displayForm === true ?
       <WordReviewForm id={word.id}
         word={word}
-        setDisplayForm={setDisplayForm} /> : <button onClick={handleReviewClick}>Review Me!</button>
+        setDisplayForm={setDisplayForm} /> : null
 
   let mappedReviews = reviews.map(review => {
     return (
@@ -111,6 +111,7 @@ const WordShow = (props) => {
             <div className="card-action">
               <a className="waves-effect waves-light btn" onClick={handleEditClick}><i className="small material-icons left">mode_edit</i>Edit This Word</a>
               <a className="waves-effect waves-light btn" onClick={handleDelWordClick}><i className="small material-icons left">delete</i>Delete This Word</a>
+              <a className="waves-effect waves-light btn" onClick={handleReviewClick}><i className="small material-icons left">mode_review</i>Review This Word</a>
             </div>
           </div>
         </div>
