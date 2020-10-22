@@ -79,7 +79,7 @@ const WordShow = (props) => {
 
   let mappedReviews = reviews.map(review => {
     return (
-      <>
+      <div key={review.id}>
         <div>
           <br />
           <button onClick={() => { handleShowMoneyClick(review.id) }}>Edit&nbsp;&nbsp;</button>
@@ -88,10 +88,11 @@ const WordShow = (props) => {
           Rating: {review.rating}<br />
           Review: {review.comment}
         </div>
-        {showMeTheMoney === review.id ?
-          (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick} setDisplayForm={setDisplayForm} id={word.id} setShowMeTheMoney={setShowMeTheMoney} />) : null
-        }
-      </>
+        <div>
+          {showMeTheMoney === review.id ?
+            (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick} setDisplayForm={setDisplayForm} id={word.id} setShowMeTheMoney={setShowMeTheMoney} />) : null}
+        </div>
+      </div>
     )
   })
 
@@ -99,14 +100,19 @@ const WordShow = (props) => {
     return <Redirect to="/words" />
   } else {
     return (
-      <div>
-        <div>
-          <p>Word: {word.name}</p>
-          <p>Definition: {word.definition}</p>
-          <p>Language: {word.language?.name}</p>
-          <button onClick={handleEditClick}>Edit&nbsp;&nbsp;</button>
-          <button onClick={handleDelWordClick}>Delete</button><br />
-          <h1>Words Words Words</h1>
+      <div className="row">
+        <div className="col s12 m6 offset-m3">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">{word.name}</span>
+              <p>Definition: {word.definition}</p>
+              <p>Language: {word.language?.name}</p>
+            </div>
+            <div className="card-action">
+              <a className="waves-effect waves-light btn" onClick={handleEditClick}><i className="small material-icons left">mode_edit</i>Edit This Word</a>
+              <a className="waves-effect waves-light btn" onClick={handleDelWordClick}><i className="small material-icons left">delete</i>Delete This Word</a>
+            </div>
+          </div>
         </div>
         <div>
           {editForm}

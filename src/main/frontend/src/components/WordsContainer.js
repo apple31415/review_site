@@ -14,16 +14,15 @@ const WordsContainer = (props) => {
 
   let WordsElements = words.map((word, index) => {
     return (
-      <div class="row" key={index}>
-        <div class="col s12 m6 offset-m3">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">{word.name}</span>
+      <div className="row" key={index}>
+        <div className="col s12 m6 offset-m3">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">{word.name}</span>
               <p>Language: {word.language.name}</p>
             </div>
-            <div class="card-action">
-              <Link to={`/words/${word.id}`}>See the definition and {word.reviews.length} review(s)
-              </Link>
+            <div className="card-action">
+              <Link to={`/words/${word.id}`} className="waves-effect waves-light btn"><i className="small material-icons left">add_box</i>See the definition and {word.reviews.length} review(s)</Link>
             </div>
           </div>
         </div>
