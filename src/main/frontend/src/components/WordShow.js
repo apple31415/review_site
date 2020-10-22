@@ -75,38 +75,56 @@ const WordShow = (props) => {
     displayForm === true ?
       <WordReviewForm id={word.id}
         word={word}
-        setDisplayForm={setDisplayForm} /> : <button onClick={handleReviewClick}>Review Me!</button>
+        setDisplayForm={setDisplayForm} /> : null
 
   let mappedReviews = reviews.map(review => {
     return (
-      <>
-        <div>
-          <br />
-          <button onClick={() => { handleShowMoneyClick(review.id) }}>Edit&nbsp;&nbsp;</button>
-          <button onClick={() => { handleDeleteClick(review.id) }}>Delete</button><br />
-          Username: {review.user.username}<br />
-          Rating: {review.rating}<br />
-          Review: {review.comment}
+      <div key={review.id}>
+        <div className="row">
+          <div className="col s12 m4 offset-m4">
+            <div className="card blue-grey lighten-2">
+              <div className="card-content white-text">
+                <span className="card-title">Review: </span>
+                <p>Username: {review.user.username}</p>
+                <p>Rating: {review.rating}</p>
+                <p>Review: {review.comment}</p>
+              </div>
+              <div className="card-action">
+                <a className="waves-effect waves-light btn" onClick={() => { handleShowMoneyClick(review.id) }}><i className="small material-icons left">mode_edit</i>Edit This Review</a>
+                <a className="waves-effect waves-light btn" onClick={() => { handleDeleteClick(review.id) }}><i className="small material-icons left">delete</i>Delete This Review</a>
+              </div>
+            </div>
+          </div>
         </div>
-        {showMeTheMoney === review.id ?
-          (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick} setDisplayForm={setDisplayForm} id={word.id} setShowMeTheMoney={setShowMeTheMoney} />) : null
-        }
-      </>
+        <div>
+          {showMeTheMoney === review.id ?
+            (<WordReviewForm word={word} review={review} handleReviewClick={handleReviewClick} setDisplayForm={setDisplayForm} id={word.id} setShowMeTheMoney={setShowMeTheMoney} />) : null}
+        </div>
+      </div>
     )
   })
+
+
+
 
   if (afterDeleteWord) {
     return <Redirect to="/words" />
   } else {
     return (
-      <div>
-        <div>
-          <p>Word: {word.name}</p>
-          <p>Definition: {word.definition}</p>
-          <p>Language: {word.language?.name}</p>
-          <button onClick={handleEditClick}>Edit&nbsp;&nbsp;</button>
-          <button onClick={handleDelWordClick}>Delete</button><br />
-          <h1>Words Words Words</h1>
+      <div className="row padded-bottom">
+        <div className="col s12 m6 offset-m3">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">{word.name}</span>
+              <p>Definition: {word.definition}</p>
+              <p>Language: {word.language?.name}</p>
+            </div>
+            <div className="card-action">
+              <a className="waves-effect waves-light btn" onClick={handleEditClick}><i className="small material-icons left">mode_edit</i>Edit This Word</a>
+              <a className="waves-effect waves-light btn" onClick={handleDelWordClick}><i className="small material-icons left">delete</i>Delete This Word</a>
+              <a className="waves-effect waves-light btn" onClick={handleReviewClick}><i className="small material-icons left">rate_review</i>Review This Word</a>
+            </div>
+          </div>
         </div>
         <div>
           {editForm}

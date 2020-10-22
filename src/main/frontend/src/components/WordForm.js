@@ -40,7 +40,7 @@ const WordForm = props => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({...newWord, wordId: props.word ? props.word.id : -1 })
+      body: JSON.stringify({ ...newWord, wordId: props.word ? props.word.id : -1 })
     })
       .then(() => {
         clearForm()
@@ -50,56 +50,44 @@ const WordForm = props => {
 
   const handleRefreshClick = () => {
     let refreshWord = props.refreshWord === true ? false : true
-    props.setRefreshWord(refreshWord)
+    if(props.setRefreshWord){
+      props.setRefreshWord(refreshWord)
+    }
   }
 
   let form = (
-    <form onSubmit={onSubmit}>
-      <div className="grid-container">
-        <div className="grid-x grid-padding-x">
-          <div className="medium-6 cell">
-            <label>Word
-              <input
-                required
-                type="text"
-                name="name"
+    < div className="row" >
+      <form className="col s4 offset-s4" onSubmit={onSubmit}>
+        <div className="card-panel teal darken-3">
+          <div className="row">
+            <div className="input-field">
+              <input placeholder="Word" type="text" name="name" className="validate input" onChange={handleInputChange}
+                value={newWord.name} required />
+            </div>
+            <div className="input-field">
+              <input placeholder="Definition" type="text" className="validate input" name="definition"
                 onChange={handleInputChange}
-                value={newWord.name}
-                placeholder="Your word here" />
-            </label>
+                value={newWord.definition} required />
+            </div>
           </div>
-          <div className="medium-6 cell">
-            <label>Definition
-              <input
-                required
-                type="text"
-                name="definition"
-                onChange={handleInputChange}
-                value={newWord.definition}
-                placeholder="Enter the definition (optional)" />
-            </label>
-          </div>
-          <div>
-            <label>Select Language
-              <select
-                required
-                name="languageName"
-                onChange={handleInputChange}
-                value={newWord.languageName}>
-                <option key="0" value="" name="languageName">
-                  Select a Language</option>
-                {dropdown}
-              </select>
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Submit" />
+          <div className="input-field">
+            <select className="browser-default" required
+              name="languageName"
+              onChange={handleInputChange}
+              value={newWord.languageName}>
+              <option value="">--Select A Language--</option>
+              {dropdown}
+            </select>
           </div>
         </div>
-      </div>
-    </form>
+        <div className="col s8 offset-s2">
+            <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i className="material-icons right">send</i>
+            </button>
+          </div>
+      </form>
+    </div>
   )
-
   return form
 }
 

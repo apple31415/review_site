@@ -5,6 +5,7 @@ import WordsContainer from './WordsContainer.js';
 import WordShow from './WordShow.js';
 import WordForm from './WordForm.js';
 import NewUserForm from './NewUserForm.js';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/words"><WordsContainer /></Route>
         <Route exact path="/users/new"><NewUserForm /></Route>
       </Switch>
+     <Footer/>
     </>
   )
 }

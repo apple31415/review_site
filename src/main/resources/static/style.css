@@ -1,31 +1,36 @@
-:root {
-  --darkGreen: #a3a380;
-  --lightGreen: #d6ce93;
-  --offWhite: #efebce;
-  --lightPink: #d8a48f;
-  --purple: #bb8588;
-}
-
 body {
-  background-color: var(--lightGreen);
-  color: var(--purple);
+  background-color: #37474f;
   text-align: center;
 }
 
 #navbar {
-  background-color: var(--darkGreen);
-  color: var(--lightPink);
-}
-
-#one-word {
-  background-color: var(--offWhite);
-  width: 20%;
-  border: 3px solid var(--purple);
-  border-radius: 10px;
-  margin: 3em auto;
-  padding 10px 10px;
+  background-color: #cfd8dc;
 }
 
 .error {
   color: darkRed;
+}
+
+.input {
+  color: #cfd8dc;
+}
+
+.upp {
+  font-weight: bolder;
+}
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+     position: relative;
+     opacity: 1 !important;
+}
+
+#footer{
+position: fixed;
+bottom: 0;
+width: 100%;
+z-index: 1000;
+}
+
+.padded-bottom{
+padding-bottom: 7em;
 }
