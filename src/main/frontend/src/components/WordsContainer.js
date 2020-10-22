@@ -32,7 +32,7 @@ const WordsContainer = (props) => {
   })
 
   return (
-    <div>
+    <div className="padded-bottom">
       {WordsElements}
     </div>
   )

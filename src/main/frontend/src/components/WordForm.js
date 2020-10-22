@@ -57,32 +57,34 @@ const WordForm = props => {
 
   let form = (
     < div className="row" >
-      <form className="col s12" onSubmit={onSubmit}>
-        <div className="row">
-          <div className="input-field col s4 offset-s4">
-            <input placeholder="Word" type="text" name="name" className="validate input" onChange={handleInputChange}
-              value={newWord.name} required />
+      <form className="col s4 offset-s4" onSubmit={onSubmit}>
+        <div className="card-panel teal darken-3">
+          <div className="row">
+            <div className="input-field">
+              <input placeholder="Word" type="text" name="name" className="validate input" onChange={handleInputChange}
+                value={newWord.name} required />
+            </div>
+            <div className="input-field">
+              <input placeholder="Definition" type="text" className="validate input" name="definition"
+                onChange={handleInputChange}
+                value={newWord.definition} required />
+            </div>
           </div>
-          <div className="input-field col s4 offset-s4">
-            <input placeholder="Definition" type="text" className="validate input" name="definition"
+          <div className="input-field">
+            <select className="browser-default" required
+              name="languageName"
               onChange={handleInputChange}
-              value={newWord.definition} required />
+              value={newWord.languageName}>
+              <option value="">--Select A Language--</option>
+              {dropdown}
+            </select>
           </div>
         </div>
-        <div className="input-field col s4 offset-s4">
-          <select className="browser-default" required
-            name="languageName"
-            onChange={handleInputChange}
-            value={newWord.languageName}>
-            <option value="" disabled>Language</option>
-            {dropdown}
-          </select>
-        </div>
-        <div className="col s4 offset-s4">
-          <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-          <i className="material-icons right">send</i>
-          </button>
-        </div>
+        <div className="col s8 offset-s2">
+            <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i className="material-icons right">send</i>
+            </button>
+          </div>
       </form>
     </div>
   )

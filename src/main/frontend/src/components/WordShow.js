@@ -111,7 +111,7 @@ const WordShow = (props) => {
     return <Redirect to="/words" />
   } else {
     return (
-      <div className="row">
+      <div className="row padded-bottom">
         <div className="col s12 m6 offset-m3">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">

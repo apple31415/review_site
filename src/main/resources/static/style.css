@@ -18,3 +18,19 @@ body {
 .upp {
   font-weight: bolder;
 }
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+     position: relative;
+     opacity: 1 !important;
+}
+
+#footer{
+position: fixed;
+bottom: 0;
+width: 100%;
+z-index: 1000;
+}
+
+.padded-bottom{
+padding-bottom: 7em;
+}
