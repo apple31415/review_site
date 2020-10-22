@@ -6,21 +6,30 @@ const WordsContainer = (props) => {
 
   useEffect(() => {
     fetch('/api/v1/words')
-    .then(result => result.json())
-    .then(words => {
-      setWords(words)
-    })
+      .then(result => result.json())
+      .then(words => {
+        setWords(words)
+      })
   }, [])
-  
+
   let WordsElements = words.map((word, index) => {
-    return(
-      <div key={index} id="one-word">
-        <Link to={`/words/${word.id}`}>
-          <h4>Word: {word.name}</h4>
-        </Link>
-        <p>Language: {word.language.name}</p>
+    return (
+      <div class="row" key={index}>
+        <div class="col s12 m6 offset-m3">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{word.name}</span>
+              <p>Language: {word.language.name}</p>
+            </div>
+            <div class="card-action">
+              <Link to={`/words/${word.id}`}>See the definition and {word.reviews.length} review(s)
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     )
+
   })
 
   return (
