@@ -80,13 +80,21 @@ const WordShow = (props) => {
   let mappedReviews = reviews.map(review => {
     return (
       <div key={review.id}>
-        <div>
-          <br />
-          <button onClick={() => { handleShowMoneyClick(review.id) }}>Edit&nbsp;&nbsp;</button>
-          <button onClick={() => { handleDeleteClick(review.id) }}>Delete</button><br />
-          Username: {review.user.username}<br />
-          Rating: {review.rating}<br />
-          Review: {review.comment}
+        <div className="row">
+          <div className="col s12 m4 offset-m4">
+            <div className="card blue-grey lighten-2">
+              <div className="card-content white-text">
+                <span className="card-title">Review: </span>
+                <p>Username: {review.user.username}</p>
+                <p>Rating: {review.rating}</p>
+                <p>Review: {review.comment}</p>
+              </div>
+              <div className="card-action">
+                <a className="waves-effect waves-light btn" onClick={() => { handleShowMoneyClick(review.id) }}><i className="small material-icons left">mode_edit</i>Edit This Review</a>
+                <a className="waves-effect waves-light btn" onClick={() => { handleDeleteClick(review.id) }}><i className="small material-icons left">delete</i>Delete This Review</a>
+              </div>
+            </div>
+          </div>
         </div>
         <div>
           {showMeTheMoney === review.id ?
@@ -95,6 +103,9 @@ const WordShow = (props) => {
       </div>
     )
   })
+
+
+
 
   if (afterDeleteWord) {
     return <Redirect to="/words" />
@@ -111,7 +122,7 @@ const WordShow = (props) => {
             <div className="card-action">
               <a className="waves-effect waves-light btn" onClick={handleEditClick}><i className="small material-icons left">mode_edit</i>Edit This Word</a>
               <a className="waves-effect waves-light btn" onClick={handleDelWordClick}><i className="small material-icons left">delete</i>Delete This Word</a>
-              <a className="waves-effect waves-light btn" onClick={handleReviewClick}><i className="small material-icons left">mode_review</i>Review This Word</a>
+              <a className="waves-effect waves-light btn" onClick={handleReviewClick}><i className="small material-icons left">rate_review</i>Review This Word</a>
             </div>
           </div>
         </div>
